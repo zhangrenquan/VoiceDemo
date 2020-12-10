@@ -68,42 +68,6 @@ public class SoundUtil {
 
     //数字播报
     public void playNum(final String soundName) {
-        if (soundName.equals("srzfje")) {
-            long curTimeLong = DateUtil.getCurTimeLong();//当前时间
-            Long upTimeLong = DateUtil.getDateUtil().getUpTimeLong();//上一次点击时间
-            if (1700 > (curTimeLong - upTimeLong)) {
-                return;
-            }
-            DateUtil.getDateUtil().setUpTimeLong(curTimeLong);
-        }
-
-        if (soundName.equals("csfkm")) {
-            long curTimeLong = DateUtil.getCurTimeLong();//当前时间
-            Long upTimeLong = DateUtil.getDateUtil().getUpTimeLong();//上一次点击时间
-            if (1500 > (curTimeLong - upTimeLong)) {
-                return;
-            }
-            DateUtil.getDateUtil().setUpTimeLong(curTimeLong);
-        }
-
-        if (soundName.equals("delete")) {
-            long curTimeLong = DateUtil.getCurTimeLong();//当前时间
-            Long upTimeLong = DateUtil.getDateUtil().getUpTimeLong();//上一次点击时间
-            if (400 > (curTimeLong - upTimeLong)) {
-                return;
-            }
-            DateUtil.getDateUtil().setUpTimeLong(curTimeLong);
-        }
-
-        if (soundName.equals("srhfje")) {
-            long curTimeLong = DateUtil.getCurTimeLong();//当前时间
-            Long upTimeLong = DateUtil.getDateUtil().getUpTimeLong();//上一次点击时间
-            if (1500 > (curTimeLong - upTimeLong)) {
-                return;
-            }
-            DateUtil.getDateUtil().setUpTimeLong(curTimeLong);
-        }
-
         mExecutorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -115,9 +79,6 @@ public class SoundUtil {
                         Integer soundId = soundMap.get(soundName);
                         if (null != soundId) {
                             soundPool.play(soundId, 1, 1, 1, 0, 1);
-                            if (soundName.equals("srzfje") || soundName.equals("csfkm") || soundName.equals("srhfje")) {
-                                Thread.sleep(1000);
-                            }
                             if (soundName.length() == 1 || soundName.equals("dot")) {
                                 Thread.sleep(300);
                             }
@@ -178,8 +139,6 @@ public class SoundUtil {
                         }
                         try {
                             if (soundName.equals("success")) {
-                                Thread.sleep(800);
-                            } else if (soundName.equals("pleasepay")) {
                                 Thread.sleep(800);
                             } else {
                                 Thread.sleep(350);
